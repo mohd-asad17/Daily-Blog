@@ -15,3 +15,9 @@
   "description": ""
 }
 
+// changes you have to made in these are  like 
+
+// "name": "mynpmusername/foldername", 
+// "main" : "dist/index.js" because .ts file is just a syntax you write but your browser or npm understand .js file 
+// after that we will publish this to npm so that we can use it in my backend and my frontend pre-method doing if you are not using monorepo
+// then we can install this package on my  computer to import it in the project
