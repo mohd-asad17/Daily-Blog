@@ -80,13 +80,18 @@ blogRouter.get('/bulk', async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
-  const findMultiplePost = await prisma.post.findMany(
-    /*     {
-        where:{
-            id
+  const findMultiplePost = await prisma.post.findMany({
+    select: {
+      description: true,
+      title: true,
+      id: true,
+      author : {
+        select : {
+            name: true
         }
-    } */
-  )
+      }
+    }
+  });
   return c.json({
     findMultiplePost
   });
