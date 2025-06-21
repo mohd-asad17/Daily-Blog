@@ -15,12 +15,12 @@ export const blogRouter = new Hono<{
 }>();
 
 blogRouter.use('/*', async (c, next) => {
-	const jwt = c.req.header('Authorization');
-	if (!jwt) {
+	const header = c.req.header('Authorization');
+	if (!header) {
 		c.status(401);
 		return c.json({ error: "unauthorized" });
 	}
-	const token = jwt.split(' ')[1];
+	const token = header.split(' ')[1];
 	const payload = await verify(token, c.env.JWT_SECRET);
 	if (!payload) {
 		c.status(401);
@@ -92,9 +92,7 @@ blogRouter.get('/bulk', async (c) => {
       }
     }
   });
-  return c.json({
-    findMultiplePost
-  });
+  return c.json(findMultiplePost);
 })
 
 blogRouter.get('/:id', async (c) => {
@@ -107,8 +105,5 @@ blogRouter.get('/:id', async (c) => {
       id: id
     }
   })
-  return c.json({
-    post: findPost,
-    message: "read your post"
-  })
+  return c.json(findPost);
 })

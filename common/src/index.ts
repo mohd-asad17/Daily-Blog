@@ -13,12 +13,12 @@ export const signInInput = z.object({
 
 export const createBlog = z.object({
     title: z.string(),
-    content : z.string()
+    description : z.string()
 })
 
 export const updateBlog = z.object({
     title: z.string(),
-    content : z.string(),
+    description : z.string(),
     id : z.string()
 })
 

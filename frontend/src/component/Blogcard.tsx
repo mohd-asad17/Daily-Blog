@@ -1,11 +1,12 @@
 interface Blogcardprops {
     authorName: string;
     title: string;
-    content: string;
+    description: string;
     publishedDate: string;
+    id : number;
 }
 
-export const Blogcard = ({ authorName, title, content, publishedDate }: Blogcardprops) => {
+export const Blogcard = ({ authorName, title, description, publishedDate }: Blogcardprops) => {
     return <div className=" p-4 border-b border-slate-200 pb-4">
         <div className="flex ">
           <Avatar size="small" name={authorName} />
@@ -22,10 +23,10 @@ export const Blogcard = ({ authorName, title, content, publishedDate }: Blogcard
             {title}
         </div>
         <div className="text-md font-thin pt-1">
-            {content.slice(0, 100) + "..."}
+            {description.slice(0, 100) + "..."}
         </div>
         <div className=" text-slate-500 text-sm font-thin pt-4">
-            {`${Math.ceil(content.length / 100)} minute(s) read`}
+            {`${Math.ceil(description.length / 100)} minute(s) read`}
         </div>
     </div>
 }
